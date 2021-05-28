@@ -62,6 +62,7 @@ function buildCharts(sample) {
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    console.log(resultArray)
 
     // Deliverable3-1. Create a variable that filters the metadata array for
     // the object with the desired sample number.
@@ -80,16 +81,22 @@ function buildCharts(sample) {
     var otu_ids = result.otu_ids;
     var otu_labels = result.otu_labels;
     var sample_values = result.sample_values;
+    console.log(otu_ids)
 
     // 3-3. Create a variable that holds the washing frequency.
     var washfreq = resultMD.wfreq
-    console.log(washfreq)
+    // console.log(washfreq)
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
+    var yticks = otu_ids.sort((a, b) => b.sample_values - a.sample_values)
+    
+    var sliced = yticks.slice(0,10)
+    console.log(sliced)
+    
 
-    var yticks = otu_ids.slice(0,10).sort((a,b) => a.sample_values - b.sample_values)
+    // var yticks = otu_ids.slice(0,10).sort((a,b) => a.sample_values - b.sample_values)
     //var yticks = otu_ids.map((a,b) => a-b).reverse().slice(0,10)
     // var xticks = sample_values.sort((a,b) => a.sample_values - b.sample_values).slice(0,10)
     console.log(yticks)
@@ -98,7 +105,7 @@ function buildCharts(sample) {
     // 8. Create the trace for the bar chart. 
     var trace = {
       x: sample_values,
-      y: yticks,
+      y: sliced.sort((a, b) => b.sample_values - a.sample_values),
       type: "bar",
       text: otu_labels,
       orientation: "h"
@@ -159,12 +166,6 @@ function buildCharts(sample) {
     
     // 3-5. Create the layout for the gauge chart.
     var gaugeLayout = { 
-      margin: {
-        l: 100,
-        r: 100,
-        t: 100,
-        b: 100
-      }
     };
 
     // 3-6. Use Plotly to plot the gauge data and layout.
