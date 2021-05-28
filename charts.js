@@ -140,6 +140,7 @@ function buildCharts(sample) {
     // 3-4. Create the trace for the gauge chart.
     var trace = {
       value: washfreq,
+      title: { text: "Scrubs Per Week" },
       type: "indicator",
       mode: "gauge+number",
       gauge: {
