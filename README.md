@@ -1,1 +1,2 @@
 # BellyButtonBiodiversity
+This dashboard will aid Improbable Beef in their quest to create the perfect meat substitute that actually comes close to the real thing.  By using the dropdown to select their subject, the webpage will display the top ten bacteria found through a bar chart, the bacteria cultures per sample through a bubble chart, and the number of times a subject washes their belly button per week.  We also added a little customization to the webpage by adding background pictures and colors as well as changing the text color.
